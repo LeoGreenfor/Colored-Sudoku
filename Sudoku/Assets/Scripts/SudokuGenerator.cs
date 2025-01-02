@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class SudokuGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GenerateBoard(int cells, int rows)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
