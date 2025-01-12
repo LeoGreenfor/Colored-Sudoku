@@ -5,47 +5,134 @@ using UnityEngine;
 
 public class SudokuGenerator : MonoBehaviour
 {
+    private int[,] board;
     private List<int> _staticNumbers;
+    private int _boardSize;
 
     private void Start()
     {
-        _staticNumbers = new List<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        
-        GenerateBoard(9, 9);
+        // for testing
+        SetBoardData(9);
+
+        GenerateBoard(_boardSize);
+    }
+
+    public void SetBoardData(int boardSize)
+    {
+        _boardSize = boardSize;
+
+        for(int i = 1; i <= boardSize; i++) 
+            _staticNumbers.Add(i);
     }
     
-    public void GenerateBoard(int cells, int rows)
+    public int[,] GenerateBoard(int size)
     {
-        List<int> numbers = new List<int>();
-        int[,] board = new int[cells, rows];
+        board = new int[size, size];
 
-        for (int i = 0; i < rows; i++)
+        FillBoard(0, 0);
+        /*if (FillBoard(0, 0))
         {
-            numbers.AddRange(_staticNumbers);
-            Debug.Log(numbers.Count);
-            int currentNumber = ChooseRandomNumber(numbers);
+            Debug.Log("Sudoku board generated successfully!");
 
-            for (int j = 0; j < cells; j++)
+            string boardToString = "";
+            for (int i = 0; i < size; i++)
             {
-                board[i, j] = currentNumber;
-                numbers.Remove(currentNumber);
-                if (numbers.Count > 0) currentNumber = ChooseRandomNumber(numbers);
+                for (int j = 0; j < size; j++)
+                {
+                    boardToString += board[i, j] + " ";
+                }
+                boardToString += "\n";
+            }
+            Debug.Log(boardToString);
+        }
+        else
+        {
+            Debug.LogError("Failed to generate Sudoku board.");
+        }*/
+
+        return board;
+    }
+
+    private bool FillBoard(int row, int col)
+    {
+        int size = board.GetLength(0);
+
+        // якщо ми дос€гли к≥нц€ таблиц≥, повертаЇмо усп≥х
+        if (row == size)
+        {
+            return true;
+        }
+
+        // ѕереходимо до наступного р€дка п≥сл€ завершенн€ стовпц€
+        if (col == size)
+        {
+            return FillBoard(row + 1, 0);
+        }
+
+        // —пробуЇмо вставити числа в≥д 1 до 9
+        List<int> numbers = new List<int>(_staticNumbers);
+        Shuffle(numbers); // ѕерем≥шуЇмо числа дл€ рандом≥зац≥њ
+
+        foreach (int num in numbers)
+        {
+            if (IsValid(row, col, num))
+            {
+                board[row, col] = num;
+
+                // –екурсивний виклик дл€ заповненн€ наступноњ кл≥тинки
+                if (FillBoard(row, col + 1))
+                {
+                    return true;
+                }
+
+                // якщо вставка числа призвела до помилки, скидаЇмо кл≥тинку
+                board[row, col] = 0;
             }
         }
 
-        string boardToString = "";
-        for (int i = 0;i < cells; i++)
+        // якщо жодне число не п≥дходить, повертаЇмос€ назад
+        return false;
+    }
+    private bool IsValid(int row, int col, int num)
+    {
+        int size = board.GetLength(0);
+        int boxSize = (int)Mathf.Sqrt(size);
+
+        // ѕерев≥рка р€дка
+        for (int i = 0; i < size; i++)
         {
-            for (int j = 0; j < rows; j++)
-                boardToString += board[i, j] + " ";
-            boardToString += "\n";
+            if (board[row, i] == num) return false;
         }
 
-        Debug.Log(boardToString);
+        // ѕерев≥рка стовпц€
+        for (int i = 0; i < size; i++)
+        {
+            if (board[i, col] == num) return false;
+        }
+
+        // ѕерев≥рка сектора (3x3)
+        int startRow = (row / boxSize) * boxSize;
+        int startCol = (col / boxSize) * boxSize;
+
+        for (int i = 0; i < boxSize; i++)
+        {
+            for (int j = 0; j < boxSize; j++)
+            {
+                if (board[startRow + i, startCol + j] == num) return false;
+            }
+        }
+
+        return true;
     }
 
-    private int ChooseRandomNumber(List<int> numbers)
+    private void Shuffle(List<int> list)
     {
-        return numbers[Random.Range(0, numbers.Count)];
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            int temp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
     }
 }
