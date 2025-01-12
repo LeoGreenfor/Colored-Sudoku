@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 8952588045123209516}
   - component: {fileID: 385151264518001319}
   - component: {fileID: -868260475558336815}
+  - component: {fileID: 105698742131407864}
   m_Layer: 5
   m_Name: Cell0-0
   m_TagString: Untagged
@@ -251,7 +252,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 385151264518001319}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &105698742131407864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683445635321163552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc921f58803a99340b74a13c6f831257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Number: 0
+  Button: {fileID: -868260475558336815}
+  Text: {fileID: 8651127528890565872}

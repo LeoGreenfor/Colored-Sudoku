@@ -6,16 +6,16 @@ using UnityEngine;
 public class SudokuGenerator : MonoBehaviour
 {
     private int[,] board;
-    private List<int> _staticNumbers;
+    private List<int> _staticNumbers = new List<int>();
     private int _boardSize;
 
-    private void Start()
+    /*private void Start()
     {
         // for testing
         SetBoardData(9);
 
         GenerateBoard(_boardSize);
-    }
+    }*/
 
     public void SetBoardData(int boardSize)
     {
