@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public ColorPalletsCollection ColorPalletsCollection;
+
     [Header("Sudoku Board Settings")]
     [SerializeField]
     private SudokuBoard board;

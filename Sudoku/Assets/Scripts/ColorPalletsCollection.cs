@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorPalletsCollection : MonoBehaviour
+[CreateAssetMenu(fileName = "ColorPalletsCollection", menuName = "ScriptableObjects/ColorPalletsCollection", order = 0)]
+public class ColorPalletsCollection : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ColorPallet[] Pallets;
 
-    // Update is called once per frame
-    void Update()
+    [System.Serializable]
+    public class ColorPallet
     {
-        
+        public Color[] colors;
     }
 }

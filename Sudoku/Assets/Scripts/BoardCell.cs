@@ -27,6 +27,11 @@ public class BoardCell : MonoBehaviour
         Text.text = number.ToString();
     }
 
+    public void SetColor(Color color)
+    {
+        Button.image.color = color;
+    }
+
     public void ShowNumber()
     {
         Text.color = new Color(Text.color.r, Text.color.g, Text.color.b, 1f);
@@ -35,6 +40,12 @@ public class BoardCell : MonoBehaviour
 
     private void CheckOnClick()
     {
+        if (GameManager.Instance.EnergyCounter == 0)
+        {
+            Debug.Log("ENERGY OUT");
+            return;
+        }
+
         if (GameManager.Instance.CurrentCheckedNumber == Number)
         {
             Debug.Log("TRUE");

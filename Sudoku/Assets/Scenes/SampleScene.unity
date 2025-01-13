@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55e19104b03b984baa01aa90e3e21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ColorPalletsCollection: {fileID: 11400000, guid: fb15abf2a2ed5d042af95dbabd009d76, type: 2}
   board: {fileID: 28981825653257643}
   CurrentCheckedNumber: 0
   MinimumShownNumbers: 17
