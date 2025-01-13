@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public int CurrentCheckedNumber;
+    public int MinimumShownNumbers;
 
     [SerializeField]
     private SudokuBoard board;

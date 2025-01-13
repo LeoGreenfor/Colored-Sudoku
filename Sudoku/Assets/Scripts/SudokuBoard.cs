@@ -16,5 +16,19 @@ public class SudokuBoard : MonoBehaviour
         {
             boardCells[i].SetNumber(boardToLine[i]);
         }
+
+        int counter = 0;
+
+        while(counter < GameManager.Instance.MinimumShownNumbers)
+        {
+            int currentIndex = UnityEngine.Random.Range(0, boardToLine.Length);
+
+            if (!boardCells[currentIndex].IsShown) 
+            {
+                counter++;
+                boardCells[currentIndex].ShowNumber();
+            }
+            //shownNumbers[i] = UnityEngine.Random.Range(0, boardToLine.Length);
+        }
     }
 }

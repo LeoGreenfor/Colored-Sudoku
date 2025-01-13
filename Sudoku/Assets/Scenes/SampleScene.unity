@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCheckedNumber: 0
+  MinimumShownNumbers: 17
   board: {fileID: 28981825653257643}
 --- !u!114 &283482785
 MonoBehaviour:
