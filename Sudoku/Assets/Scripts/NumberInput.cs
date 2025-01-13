@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NumberInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private int number;
+    [SerializeField]
+    private Button button;
+
+    private void Start()
     {
-        
+        button.onClick.AddListener(SetCurrentCheckedNumber);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetCurrentCheckedNumber()
     {
-        
+        GameManager.Instance.CurrentCheckedNumber = number;
     }
 }

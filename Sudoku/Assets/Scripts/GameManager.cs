@@ -7,6 +7,25 @@ using UnityEngine;
 [RequireComponent(typeof(SudokuGenerator))]
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
+    public int CurrentCheckedNumber;
+
     [SerializeField]
     private SudokuBoard board;
 

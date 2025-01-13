@@ -11,10 +11,27 @@ public class BoardCell : MonoBehaviour
     public Button Button;
     public TMP_Text Text;
 
+    private void Start()
+    {
+        Button.onClick.AddListener(CheckOnClick);
+    }
+
     public void SetNumber(int number)
     {
         Number = number;
 
         Text.text = number.ToString();
+    }
+
+    private void CheckOnClick()
+    {
+        if (GameManager.Instance.CurrentCheckedNumber == Number)
+        {
+            Debug.Log("TRUE");
+        }
+        else
+        {
+            Debug.Log("FALSE");
+        }
     }
 }

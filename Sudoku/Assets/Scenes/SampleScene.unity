@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55e19104b03b984baa01aa90e3e21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentCheckedNumber: 0
   board: {fileID: 28981825653257643}
 --- !u!114 &283482785
 MonoBehaviour:
@@ -465,6 +466,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1711583718225450027, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
@@ -887,6 +892,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1068,6 +1077,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1174,6 +1187,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1278,6 +1295,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1711583718225450027, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
@@ -1506,6 +1527,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1615,6 +1640,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1711583718225450027, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_text
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
@@ -1907,6 +1936,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1711583718225450027, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
@@ -2386,6 +2419,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1711583718225450027, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
       propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155295603427601616, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
+      propertyPath: number
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2664672616303297332, guid: e502d478760b3414b87db846dc27d4ff, type: 3}
