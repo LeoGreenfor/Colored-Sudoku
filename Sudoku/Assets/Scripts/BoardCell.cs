@@ -43,6 +43,7 @@ public class BoardCell : MonoBehaviour
         else
         {
             Debug.Log("FALSE");
+            GameManager.Instance.OnMakingError?.Invoke();
         }
     }
 }

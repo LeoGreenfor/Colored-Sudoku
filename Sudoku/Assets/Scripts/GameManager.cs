@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
@@ -24,16 +26,24 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Sudoku Board Settings")]
+    [SerializeField]
+    private SudokuBoard board;
     public int CurrentCheckedNumber;
     public int MinimumShownNumbers;
 
+    [Header("Energy Config")]
+    public int EnergyCounter = 100;
     [SerializeField]
-    private SudokuBoard board;
+    private TMP_Text energyCounterText;
+    public Action OnMakingError;
 
     private SudokuGenerator generator;
 
     private void Start()
     {
+        OnMakingError += ReduceEnergy;
+
         generator = GetComponent<SudokuGenerator>();
         generator.SetBoardData(9);
 
@@ -64,5 +74,11 @@ public class GameManager : MonoBehaviour
         Debug.Log(boardToString);
 
         board.SetUpABoard(oneDArray);
+    }
+
+    private void ReduceEnergy()
+    {
+        EnergyCounter--;
+        energyCounterText.text = EnergyCounter.ToString();
     }
 }
