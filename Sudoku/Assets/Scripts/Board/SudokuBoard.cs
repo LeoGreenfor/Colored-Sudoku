@@ -44,7 +44,7 @@ public class SudokuBoard : MonoBehaviour
             boardCells[i].SetNumber(board[i].Number);
             boardCells[i].IsShown = board[i].IsShown;
 
-            Debug.Log(boardCells[i].Number + " " + boardCells[i].IsShown);
+            //Debug.Log(boardCells[i].Number + " " + boardCells[i].IsShown);
         }
     }
 

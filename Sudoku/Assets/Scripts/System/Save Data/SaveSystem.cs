@@ -25,13 +25,13 @@ public class SaveSystem : Singleton<SaveSystem>
         Debug.Log(Application.persistentDataPath + saveFilePath);
     }
 
-    public void Save()
+    private void Save()
     {
+        CurrentData.SetBoard(GameManager.Instance.GetBoard());
+
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Path.Combine(Application.persistentDataPath, saveFilePath);
         
-        if (File.Exists(path)) File.Delete(path);
-
         FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
 
         formatter.Serialize(fileStream, CurrentData);

@@ -74,13 +74,14 @@ public class BoardCell : MonoBehaviour
         {
             Debug.Log("TRUE");
             IsShown = true;
-            //ShowNumber();
         }
         else
         {
             Debug.Log("FALSE");
             GameManager.Instance.OnMakingError?.Invoke();
         }
+
+        SaveSystem.Instance.OnSave?.Invoke();
     }
 
 

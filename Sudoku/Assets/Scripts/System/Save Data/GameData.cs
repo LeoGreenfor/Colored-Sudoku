@@ -11,6 +11,9 @@ public class GameData
 
     public void SetBoard(BoardCell[] board)
     {
+        Board.Clear();
+
+        string boardToString = "";
         for (int i = 0; i < board.Length; i++)
         {
             BoardCellData cellData = new()
@@ -20,8 +23,10 @@ public class GameData
             };
 
             Board.Add(cellData);
-            Debug.Log(cellData.Number + " " + cellData.IsShown);
+            boardToString += cellData.Number + " " + cellData.IsShown;
         }
+
+        Debug.Log(boardToString);
     }
 }
 [System.Serializable]

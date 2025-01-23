@@ -66,7 +66,7 @@ public class GameManager : Singleton<GameManager>
             board.SetUpNewBoard(oneDArray);
 
             SaveSystem.Instance.SetData(board.GetBoard(), 0, Difficulty.None);
-            SaveSystem.Instance.Save();
+            SaveSystem.Instance.OnSave?.Invoke();
         }
         else
         {
@@ -78,5 +78,10 @@ public class GameManager : Singleton<GameManager>
     {
         EnergyCounter--;
         energyCounterText.text = EnergyCounter.ToString();
+    }
+
+    public BoardCell[] GetBoard()
+    {
+        return board.GetBoard();
     }
 }
