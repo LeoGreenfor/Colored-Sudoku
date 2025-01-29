@@ -36,15 +36,15 @@ public class GameManager : Singleton<GameManager>
 
         var loadedData = SaveSystem.Instance.LoadData();
 
-        //GenerateNewBoard();
-        if (loadedData == null)
+        GenerateNewBoard();
+        /*if (loadedData == null)
         {
             GenerateNewBoard();
         }
         else
         {
             board.SetUpABoard(loadedData.Board.ToArray());
-        }
+        }*/
     }
 
     public void GenerateNewBoard()

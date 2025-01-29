@@ -139,6 +139,9 @@ MonoBehaviour:
   Text: {fileID: 8651127528890565872}
   _solvedColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  _flickRightColor: {r: 0, g: 0.5882353, b: 0, a: 1}
+  _flickWrongColor: {r: 0.7058824, g: 0.3137255, b: 0.3137255, a: 1}
+  _flickTime: 0.4
 --- !u!1001 &492045885518959976
 PrefabInstance:
   m_ObjectHideFlags: 0

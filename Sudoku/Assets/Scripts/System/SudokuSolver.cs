@@ -23,13 +23,14 @@ public class SudokuSolver : MonoBehaviour
         if (_solvedCellCount >= _board.GetBoard().Length)
         {
             FinishBoard();
-            //add board to gallery
         }
     }
     private void FinishBoard()
     {
         Debug.Log("FINISH");
+        //add board to gallery
+        _board.ShowUpColors();
 
-        GameManager.Instance.GenerateNewBoard();
+        //GameManager.Instance.GenerateNewBoard();
     }
 }

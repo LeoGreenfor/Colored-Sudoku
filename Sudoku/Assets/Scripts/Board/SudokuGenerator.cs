@@ -14,12 +14,10 @@ public class SudokuGenerator : MonoBehaviour
     private void Start()
     {
         // for testing
-        Debug.Log(_boardSize);
     }
     public void SetBoardData(int boardSize)
     {
         _boardSize = boardSize;
-        Debug.Log(_boardSize);
         boxSize = (int)Mathf.Sqrt(_boardSize);
         _staticNumbers = new List<int>();
 

@@ -29,6 +29,12 @@ public class BoardCell : MonoBehaviour
     private Color _solvedColor;
     [SerializeField]
     private Color _defaultColor;
+    [SerializeField]
+    private Color _flickRightColor;
+    [SerializeField]
+    private Color _flickWrongColor;
+    [SerializeField]
+    private float _flickTime;
     public Color GetSolvedColor() => _solvedColor;
     public Color GetDefaultColor() => _defaultColor;
 
@@ -55,6 +61,10 @@ public class BoardCell : MonoBehaviour
 
     public void ShowColor()
     {
+        ColorBlock colors = Button.colors; 
+        colors.disabledColor = Color.white; 
+        Button.colors = colors;
+
         Button.image.color = _solvedColor;
     }
 
@@ -75,11 +85,13 @@ public class BoardCell : MonoBehaviour
         if (GameManager.Instance.CurrentCheckedNumber == Number)
         {
             Debug.Log("TRUE");
+            StartCoroutine(ColorFlick(_flickRightColor));
             IsShown = true;
         }
         else
         {
             Debug.Log("FALSE");
+            StartCoroutine(ColorFlick(_flickWrongColor));
             GameManager.Instance.OnMakingError?.Invoke();
         }
 
@@ -87,5 +99,13 @@ public class BoardCell : MonoBehaviour
         SaveSystem.Instance.OnSave?.Invoke();
     }
 
+    private IEnumerator ColorFlick(Color color)
+    {
+        var startedColor = Button.image.color;
+        Button.image.color = color;
 
+        yield return new WaitForSeconds(_flickTime);
+
+        Button.image.color = startedColor;
+    }
 }

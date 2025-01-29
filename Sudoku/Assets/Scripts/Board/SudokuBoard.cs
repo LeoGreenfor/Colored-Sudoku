@@ -52,4 +52,12 @@ public class SudokuBoard : MonoBehaviour
     {
         return boardCells;
     }
+
+    public void ShowUpColors()
+    {
+        foreach(BoardCell cell in boardCells)
+        {
+            cell.ShowColor();
+        }
+    }
 }
