@@ -19,6 +19,8 @@ public class BoardCell : MonoBehaviour
 
             float alpha = value ? 1f : 0f;
             Text.color = new Color(Text.color.r, Text.color.g, Text.color.b, alpha);
+
+            Button.interactable = !value;
         }
     }
     private bool _isShown;
@@ -42,7 +44,7 @@ public class BoardCell : MonoBehaviour
     public void SetNumber(int number)
     {
         Number = number;
-
+        IsShown = false;
         Text.text = number.ToString();
     }
 
@@ -81,6 +83,7 @@ public class BoardCell : MonoBehaviour
             GameManager.Instance.OnMakingError?.Invoke();
         }
 
+        GameManager.Instance.OnMakingMove?.Invoke(this);
         SaveSystem.Instance.OnSave?.Invoke();
     }
 

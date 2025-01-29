@@ -26,7 +26,7 @@ public class GameData
             boardToString += cellData.Number + " " + cellData.IsShown;
         }
 
-        Debug.Log(boardToString);
+        //Debug.Log(boardToString);
     }
 }
 [System.Serializable]

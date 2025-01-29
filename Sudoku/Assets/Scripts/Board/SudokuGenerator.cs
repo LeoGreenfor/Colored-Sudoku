@@ -1,77 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class SudokuGenerator : MonoBehaviour
 {
     private int[,] board;
-    private List<int> _staticNumbers = new List<int>();
+    private List<int> _staticNumbers;
+    private int boxSize;
     private int _boardSize;
 
-    /*private void Start()
+    private void Start()
     {
         // for testing
-        SetBoardData(9);
-
-        GenerateBoard(_boardSize);
-    }*/
-
+        Debug.Log(_boardSize);
+    }
     public void SetBoardData(int boardSize)
     {
         _boardSize = boardSize;
+        Debug.Log(_boardSize);
+        boxSize = (int)Mathf.Sqrt(_boardSize);
+        _staticNumbers = new List<int>();
 
-        for(int i = 1; i <= boardSize; i++) 
+        for (int i = 1; i <= _boardSize; i++)
             _staticNumbers.Add(i);
     }
-    
-    public int[,] GenerateBoard(int size)
+
+    public int[,] GenerateBoard()
     {
-        board = new int[size, size];
+        board = new int[_boardSize, _boardSize];
 
-        FillBoard(0, 0);
-        /*if (FillBoard(0, 0))
+        // 1. «аповнюЇмо головну д≥агональ секторами (3x3)
+        for (int i = 0; i < _boardSize; i += boxSize)
         {
-            Debug.Log("Sudoku board generated successfully!");
-
-            string boardToString = "";
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    boardToString += board[i, j] + " ";
-                }
-                boardToString += "\n";
-            }
-            Debug.Log(boardToString);
+            FillBox(i, i);
         }
-        else
+
+        // 2. «аповнюЇмо решту таблиц≥
+        if (!FillBoard(0, 0))
         {
-            Debug.LogError("Failed to generate Sudoku board.");
-        }*/
+            Debug.LogError("Failed to generate a valid Sudoku board.");
+        }
 
         return board;
     }
 
     private bool FillBoard(int row, int col)
     {
-        int size = board.GetLength(0);
-
-        // якщо ми дос€гли к≥нц€ таблиц≥, повертаЇмо усп≥х
-        if (row == size)
-        {
+        // ¬ийшли за меж≥ таблиц≥
+        if (row == _boardSize)
             return true;
-        }
 
-        // ѕереходимо до наступного р€дка п≥сл€ завершенн€ стовпц€
-        if (col == size)
-        {
+        // ѕереходимо до нового р€дка
+        if (col == _boardSize)
             return FillBoard(row + 1, 0);
-        }
 
-        // —пробуЇмо вставити числа в≥д 1 до 9
+        // ѕропускаЇмо попередньо заповнен≥ кл≥тинки
+        if (board[row, col] != 0)
+            return FillBoard(row, col + 1);
+
         List<int> numbers = new List<int>(_staticNumbers);
-        Shuffle(numbers); // ѕерем≥шуЇмо числа дл€ рандом≥зац≥њ
+        Shuffle(numbers);
 
         foreach (int num in numbers)
         {
@@ -79,35 +69,38 @@ public class SudokuGenerator : MonoBehaviour
             {
                 board[row, col] = num;
 
-                // –екурсивний виклик дл€ заповненн€ наступноњ кл≥тинки
                 if (FillBoard(row, col + 1))
-                {
                     return true;
-                }
 
-                // якщо вставка числа призвела до помилки, скидаЇмо кл≥тинку
-                board[row, col] = 0;
+                board[row, col] = 0; // ¬≥дкат зм≥н
             }
         }
 
-        // якщо жодне число не п≥дходить, повертаЇмос€ назад
-        return false;
+        return false; // ЌемаЇ можливого значенн€
     }
+
+    private void FillBox(int startRow, int startCol)
+    {
+        List<int> numbers = new List<int>(_staticNumbers);
+        Shuffle(numbers);
+
+        int index = 0;
+        for (int i = 0; i < boxSize; i++)
+        {
+            for (int j = 0; j < boxSize; j++)
+            {
+                board[startRow + i, startCol + j] = numbers[index++];
+            }
+        }
+    }
+
     private bool IsValid(int row, int col, int num)
     {
-        int size = board.GetLength(0);
-        int boxSize = (int)Mathf.Sqrt(size);
-
-        // ѕерев≥рка р€дка
-        for (int i = 0; i < size; i++)
+        // ѕерев≥рка р€дка та стовпц€
+        for (int i = 0; i < _boardSize; i++)
         {
-            if (board[row, i] == num) return false;
-        }
-
-        // ѕерев≥рка стовпц€
-        for (int i = 0; i < size; i++)
-        {
-            if (board[i, col] == num) return false;
+            if (board[row, i] == num || board[i, col] == num)
+                return false;
         }
 
         // ѕерев≥рка сектора (3x3)
@@ -118,7 +111,8 @@ public class SudokuGenerator : MonoBehaviour
         {
             for (int j = 0; j < boxSize; j++)
             {
-                if (board[startRow + i, startCol + j] == num) return false;
+                if (board[startRow + i, startCol + j] == num)
+                    return false;
             }
         }
 
@@ -130,9 +124,7 @@ public class SudokuGenerator : MonoBehaviour
         for (int i = list.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
-            int temp = list[i];
-            list[i] = list[randomIndex];
-            list[randomIndex] = temp;
+            (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
         }
     }
 }
