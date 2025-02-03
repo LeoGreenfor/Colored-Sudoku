@@ -13,7 +13,7 @@ public class SudokuBoard : MonoBehaviour
     {
         // set numbers&colors on board
         var colorPallets = GameManager.Instance.ColorPalletsCollection.Pallets;
-        var pallet = colorPallets[Random.Range(0, colorPallets.Length)];
+        var pallet = colorPallets[GameManager.Instance.Level];
         for (int i = 0; i < boardCells.Length; i++)
         {
             boardCells[i].SetNumber(boardToLine[i]);

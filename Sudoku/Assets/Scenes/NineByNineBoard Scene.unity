@@ -331,9 +331,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 1
   ColorPalletsCollection: {fileID: 11400000, guid: fb15abf2a2ed5d042af95dbabd009d76, type: 2}
+  Level: 3
   board: {fileID: 28981825653257643}
-  CurrentCheckedNumber: 0
-  MinimumShownNumbers: 76
+  CurrentCheckedNumber: 1
+  MinimumShownNumbers: 80
   EnergyCounter: 100
   energyCounterText: {fileID: 1532547659}
 --- !u!114 &283482785

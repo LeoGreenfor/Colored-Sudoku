@@ -85,7 +85,7 @@ public class BoardCell : MonoBehaviour
         if (GameManager.Instance.CurrentCheckedNumber == Number)
         {
             Debug.Log("TRUE");
-            StartCoroutine(ColorFlick(_flickRightColor));
+            //StartCoroutine(ColorFlick(_flickRightColor));
             IsShown = true;
         }
         else

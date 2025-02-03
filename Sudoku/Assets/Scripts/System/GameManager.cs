@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager>
 {
     public ColorPalletsCollection ColorPalletsCollection;
 
+    public int Level;
+
     [Header("Sudoku Board Settings")]
     [SerializeField]
     private SudokuBoard board;
